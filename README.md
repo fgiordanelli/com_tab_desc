@@ -5,10 +5,9 @@ output:
     keep_md: true
 ---
 
-# Fator
 
-# {.tabset}
-```{r cars, echo=FALSE, message=FALSE, warning=FALSE, results="asis"}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 library(sas7bdat)
 library(dplyr)
 library(ggplot2)
@@ -24,15 +23,24 @@ library(huxtable)
 library(xtable)
 library(anomalize)
 library(rlang)
-
-dados <- read.csv("D:/Users/fabricio_giordanelli/Downloads/dados_seguradora.csv", stringsAsFactors = TRUE)
-
+library(readr)
 
 
-dados <- read.csv("D:/Users/fabricio_giordanelli/Downloads/dados_seguradora.csv", stringsAsFactors = TRUE)
+# dados <- readr::read_csv("D:/Users/fabricio_giordanelli/Downloads/dados_seguradora.csv", col_types = cols(qtd_batidas = col_character()),locale = readr::locale(encoding = "latin1"))
+# 
+# dados <- as.data.frame(dados)
+  
+dados <- read.csv('https://raw.githubusercontent.com/selva86/datasets/master/orange_juice_withmissing.csv')
 
-dados$preco_seguro <- as.numeric(dados$preco_seguro)
-dados$franquia <- as.numeric(dados$franquia)
+```
+
+
+# Fator
+
+# {.tabset}
+```{r cars, echo=FALSE, message=FALSE, warning=FALSE, results="asis"}
+
+
 
 for (i in 1:ncol(dados)) {
   if (is.factor(dados[,i]) == TRUE | is.character(dados[,i]) == TRUE)  {
@@ -85,40 +93,11 @@ for (i in 1:ncol(dados)) {
 
 
 
-
-
-
-
-
-
 # Numérica
 
 # {.tabset}
 ```{r cars2, echo=FALSE, message=FALSE, warning=FALSE, results="asis"}
-library(sas7bdat)
-library(dplyr)
-library(ggplot2)
-library(PerformanceAnalytics)
-library(kableExtra)
-library(questionr)
-library(knitr)
-library(descr)
-library(sjPlot)
-library(sjmisc)
-library(sjlabelled)
-library(huxtable)
-library(xtable)
-library(anomalize)
-library(rlang)
 
-dados <- read.csv("D:/Users/fabricio_giordanelli/Downloads/dados_seguradora.csv", stringsAsFactors = TRUE)
-
-
-
-dados <- read.csv("D:/Users/fabricio_giordanelli/Downloads/dados_seguradora.csv", stringsAsFactors = TRUE)
-
-dados$preco_seguro <- as.numeric(dados$preco_seguro)
-dados$franquia <- as.numeric(dados$franquia)
 
 for (i in 1:ncol(dados)) {
   if (is.numeric(dados[,i]) == TRUE) {
@@ -154,33 +133,12 @@ for (i in 1:ncol(dados)) {
 
 
 
-
-
-
 # Fator e Fator
 
 # {.tabset}
 ```{r cars3, echo=FALSE, message=FALSE, warning=FALSE, results="asis"}
-library(sas7bdat)
-library(dplyr)
-library(ggplot2)
-library(PerformanceAnalytics)
-library(kableExtra)
-library(questionr)
-library(knitr)
-library(descr)
-library(sjPlot)
-library(sjmisc)
-library(sjlabelled)
-library(huxtable)
-library(xtable)
-library(anomalize)
-library(rlang)
 
-dados <- read.csv("D:/Users/fabricio_giordanelli/Downloads/dados_seguradora.csv", stringsAsFactors = TRUE)
 
-dados$preco_seguro <- as.numeric(dados$preco_seguro)
-dados$franquia <- as.numeric(dados$franquia)
 
 for (i in 1:ncol(dados)-1) {
     for (j in (1+i):ncol(dados)) {
@@ -249,37 +207,10 @@ reg <- glm(f, family=binomial, data = dados)
 
 
 
-
-
-
-
-
-
-
 # Fator e Numérica
 
 # {.tabset}
 ```{r cars4, echo=FALSE, message=FALSE, warning=FALSE, results="asis"}
-library(sas7bdat)
-library(dplyr)
-library(ggplot2)
-library(PerformanceAnalytics)
-library(kableExtra)
-library(questionr)
-library(knitr)
-library(descr)
-library(sjPlot)
-library(sjmisc)
-library(sjlabelled)
-library(huxtable)
-library(xtable)
-library(anomalize)
-library(rlang)
-
-dados <- read.csv("D:/Users/fabricio_giordanelli/Downloads/dados_seguradora.csv", stringsAsFactors = TRUE)
-
-dados$preco_seguro <- as.numeric(dados$preco_seguro)
-dados$franquia <- as.numeric(dados$franquia)
 
 for (i in 1:ncol(dados)) {
     if (is.factor(dados[,i]) == TRUE | is.character(dados[,i]) == TRUE) {
@@ -420,26 +351,6 @@ reg <- glm(f, family=binomial, data = dados)
 
 # {.tabset}
 ```{r cars5, echo=FALSE, message=FALSE, warning=FALSE, results="asis"}
-library(sas7bdat)
-library(dplyr)
-library(ggplot2)
-library(PerformanceAnalytics)
-library(kableExtra)
-library(questionr)
-library(knitr)
-library(descr)
-library(sjPlot)
-library(sjmisc)
-library(sjlabelled)
-library(huxtable)
-library(xtable)
-library(anomalize)
-library(rlang)
-
-dados <- read.csv("D:/Users/fabricio_giordanelli/Downloads/dados_seguradora.csv", stringsAsFactors = TRUE)
-
-dados$preco_seguro <- as.numeric(dados$preco_seguro)
-dados$franquia <- as.numeric(dados$franquia)
 
   for (i in 1:ncol(dados)) {
     if (is.factor(dados[,i]) == TRUE | is.character(dados[,i]) == TRUE) {
@@ -510,26 +421,6 @@ dados$franquia <- as.numeric(dados$franquia)
 
 # {.tabset}
 ```{r cars6, echo=FALSE, message=FALSE, warning=FALSE, results="asis"}
-library(sas7bdat)
-library(dplyr)
-library(ggplot2)
-library(PerformanceAnalytics)
-library(kableExtra)
-library(questionr)
-library(knitr)
-library(descr)
-library(sjPlot)
-library(sjmisc)
-library(sjlabelled)
-library(huxtable)
-library(xtable)
-library(anomalize)
-library(rlang)
-
-dados <- read.csv("D:/Users/fabricio_giordanelli/Downloads/dados_seguradora.csv", stringsAsFactors = TRUE)
-
-dados$preco_seguro <- as.numeric(dados$preco_seguro)
-dados$franquia <- as.numeric(dados$franquia)
 
   for (i in 1:ncol(dados)-1) {
     for (j in (1+i):ncol(dados)) {
@@ -712,26 +603,6 @@ reg <- glm(f, family=binomial, data = dados)
 
 # {.tabset}
 ```{r cars7, echo=FALSE, message=FALSE, warning=FALSE, results="asis"}
-library(sas7bdat)
-library(dplyr)
-library(ggplot2)
-library(PerformanceAnalytics)
-library(kableExtra)
-library(questionr)
-library(knitr)
-library(descr)
-library(sjPlot)
-library(sjmisc)
-library(sjlabelled)
-library(huxtable)
-library(xtable)
-library(anomalize)
-library(rlang)
-
-dados <- read.csv("D:/Users/fabricio_giordanelli/Downloads/dados_seguradora.csv", stringsAsFactors = TRUE)
-
-dados$preco_seguro <- as.numeric(dados$preco_seguro)
-dados$franquia <- as.numeric(dados$franquia)
 
 for (i in 1:ncol(dados)-1) {
   for (j in (1+i):ncol(dados)) {
